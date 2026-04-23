@@ -1,0 +1,129 @@
+1. CREATE TABLE Template
+CREATE TABLE table_name (
+    column1 datatype PRIMARY KEY,
+    column2 datatype,
+    column3 datatype,
+    FOREIGN KEY (column_name) REFERENCES other_table(column)
+);
+🔥 2. INSERT Template
+INSERT INTO table_name VALUES
+(value1, value2, value3);
+
+-- OR specific columns
+INSERT INTO table_name (col1, col2)
+VALUES (val1, val2);
+🔥 3. SELECT Template
+SELECT column_name
+FROM table_name
+WHERE condition;
+SELECT * FROM table_name;
+🔥 4. UPDATE Template
+UPDATE table_name
+SET column = value
+WHERE condition;
+🔥 5. DELETE Template
+DELETE FROM table_name
+WHERE condition;
+🔥 6. ALTER TABLE Template
+ALTER TABLE table_name ADD column datatype;
+
+ALTER TABLE table_name DROP COLUMN column_name;
+🔥 7. TRUNCATE & DROP Template
+TRUNCATE TABLE table_name;
+
+DROP TABLE table_name;
+🔥 8. CONSTRAINT Templates
+PRIMARY KEY (column)
+
+FOREIGN KEY (column) REFERENCES table(column)
+
+UNIQUE(column)
+
+CHECK(condition)
+
+DEFAULT value
+🔥 9. JOIN Templates
+INNER JOIN
+SELECT *
+FROM table1 t1
+INNER JOIN table2 t2
+ON t1.col = t2.col;
+LEFT JOIN
+SELECT *
+FROM table1 t1
+LEFT JOIN table2 t2
+ON t1.col = t2.col;
+NATURAL JOIN
+SELECT *
+FROM table1
+NATURAL JOIN table2;
+🔥 10. AGGREGATE FUNCTIONS
+SELECT COUNT(column) FROM table;
+
+SELECT SUM(column) FROM table;
+
+SELECT MAX(column) FROM table;
+
+SELECT MIN(column) FROM table;
+
+SELECT AVG(column) FROM table;
+🔥 11. SUBQUERY Template
+SELECT *
+FROM table
+WHERE column = (SELECT MAX(column) FROM table);
+🔥 12. LIKE Template
+SELECT * FROM table WHERE name LIKE 'A%';
+
+SELECT * FROM table WHERE name LIKE '%N';
+🔥 13. TRANSACTION Template
+START TRANSACTION;
+
+UPDATE table SET column=value;
+
+SAVEPOINT sp1;
+
+UPDATE table SET column=value;
+
+ROLLBACK TO sp1;
+
+COMMIT;
+🔥 14. GRANT & REVOKE Template
+GRANT SELECT, INSERT, UPDATE ON table_name TO user;
+
+REVOKE SELECT, INSERT, UPDATE ON table_name FROM user;
+🔥 15. VIEW Template
+CREATE VIEW view_name AS
+SELECT * FROM table_name;
+
+DROP VIEW view_name;
+🔥 16. STORED PROCEDURE Template
+DELIMITER //
+
+CREATE PROCEDURE procedure_name()
+BEGIN
+    SQL statements;
+END //
+
+DELIMITER ;
+
+CALL procedure_name();
+🔥 17. TRIGGER Template
+DELIMITER //
+
+CREATE TRIGGER trigger_name
+BEFORE INSERT ON table_name
+FOR EACH ROW
+BEGIN
+    IF condition THEN
+        SET NEW.column = value;
+    END IF;
+END //
+
+DELIMITER ;
+🔥 18. DEFAULT + CHECK Example
+CREATE TABLE table_name (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    status VARCHAR(20) DEFAULT 'ACTIVE',
+    CHECK (id > 0)
+);
